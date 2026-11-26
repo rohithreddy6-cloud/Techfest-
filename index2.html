@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechFest 2026 | Annual College Tech Symposium</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: #0f172a;
+      color: #f1f5f9;
+      line-height: 1.6;
+    }
+
+    /* Navigation Bar */
+    header {
+      background-color: #1e293b;
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      border-bottom: 1px solid #334155;
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #38bdf8;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    nav a {
+      color: #e2e8f0;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    nav a:hover {
+      color: #38bdf8;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      background-color: #38bdf8;
+      color: #0f172a;
+      padding: 12px 26px;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      font-size: 15px;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .btn:hover {
+      background-color: #0284c7;
+      color: #ffffff;
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: #38bdf8;
+      border: 1px solid #38bdf8;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+
+    .btn-outline:hover {
+      background-color: #38bdf8;
+      color: #0f172a;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 80px 20px;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      border-bottom: 1px solid #334155;
+    }
+
+    .hero h1 {
+      font-size: 46px;
+      margin-bottom: 15px;
+      color: #38bdf8;
+    }
+
+    .hero p {
+      font-size: 18px;
+      max-width: 600px;
+      margin: 0 auto 30px;
+      color: #cbd5e1;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    /* Sections */
+    .container {
+      max-width: 1000px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 30px;
+      color: #38bdf8;
+    }
+
+    /* Events Grid */
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background-color: #1e293b;
+      padding: 25px;
+      border-radius: 8px;
+      border: 1px solid #334155;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      color: #f8fafc;
+    }
+
+    .card p {
+      color: #94a3b8;
+      font-size: 15px;
+      margin-bottom: 15px;
+    }
+
+    .prize {
+      font-weight: bold;
+      color: #34d399;
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+
+    /* Schedule Tabs & Table */
+    .tab-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .tab-btn {
+      background-color: #1e293b;
+      color: #cbd5e1;
+      border: 1px solid #334155;
+      padding: 10px 22px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .tab-btn.active {
+      background-color: #38bdf8;
+      color: #0f172a;
+      border-color: #38bdf8;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: #1e293b;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 15px;
+      text-align: left;
+      border-bottom: 1px solid #334155;
+    }
+
+    th {
+      background-color: #334155;
+      color: #38bdf8;
+    }
+
+    /* Registration Form */
+    form {
+      background-color: #1e293b;
+      padding: 30px;
+      border-radius: 8px;
+      max-width: 500px;
+      margin: 0 auto;
+      border: 1px solid #334155;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 14px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 4px;
+      border: 1px solid #475569;
+      background-color: #0f172a;
+      color: #ffffff;
+      font-size: 15px;
+    }
+
+    #confirmationBox {
+      display: none;
+      margin-top: 20px;
+      padding: 16px;
+      background-color: rgba(16, 185, 129, 0.15);
+      border: 1px solid #10b981;
+      color: #6ee7b7;
+      border-radius: 6px;
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      background-color: #1e293b;
+      color: #94a3b8;
+      margin-top: 60px;
+      border-top: 1px solid #334155;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">TECHFEST '26</div>
+    <nav>
+      <a href="#events">Events</a>
+      <a href="#schedule">Schedule</a>
+      <button type="button" class="btn" style="padding: 8px 18px;" onclick="goToRegister()">Register</button>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Welcome to TechFest 2026</h1>
+    <p>Join our annual technical symposium. Compete in coding, robotics, and gaming events to win exciting cash prizes!</p>
+    <div class="hero-buttons">
+      <button type="button" class="btn" onclick="goToRegister()">Register Now</button>
+      <button type="button" class="btn-outline" onclick="document.getElementById('events').scrollIntoView()">View Events</button>
+    </div>
+  </section>
+
+  <!-- Events Section -->
+  <section id="events" class="container">
+    <h2>Featured Events</h2>
+    <div class="events-grid">
+      <div class="card">
+        <div>
+          <h3>24-Hour Hackathon</h3>
+          <p>Build innovative software solutions in a 24-hour non-stop coding marathon.</p>
+          <div class="prize">Prize Pool: ₹50,000</div>
+        </div>
+        <button type="button" class="btn-outline" onclick="selectEvent('24-Hour Hackathon')">Select Event</button>
+      </div>
+
+      <div class="card">
+        <div>
+          <h3>RoboWars</h3>
+          <p>Design and battle custom-built robots in an arena knockout tournament.</p>
+          <div class="prize">Prize Pool: ₹30,000</div>
+        </div>
+        <button type="button" class="btn-outline" onclick="selectEvent('RoboWars')">Select Event</button>
+      </div>
+
+      <div class="card">
+        <div>
+          <h3>Code Sprint</h3>
+          <p>Test your data structures and algorithmic speed against top programmers.</p>
+          <div class="prize">Prize Pool: ₹20,000</div>
+        </div>
+        <button type="button" class="btn-outline" onclick="selectEvent('Code Sprint')">Select Event</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Schedule Section -->
+  <section id="schedule" class="container">
+    <h2>Event Schedule</h2>
+    <div class="tab-buttons">
+      <button type="button" class="tab-btn active" onclick="showDay(1, this)">Day 1 (Dec 18)</button>
+      <button type="button" class="tab-btn" onclick="showDay(2, this)">Day 2 (Dec 19)</button>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Time</th>
+          <th>Event</th>
+          <th>Venue</th>
+        </tr>
+      </thead>
+      <tbody id="scheduleBody"></tbody>
+    </table>
+  </section>
+
+  <!-- Registration Form -->
+  <section id="register" class="container">
+    <h2>Register for Events</h2>
+    <form id="registrationForm">
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" placeholder="Enter your full name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">College Email</label>
+        <input type="email" id="email" placeholder="Enter your college email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="college">College Name</label>
+        <input type="text" id="college" placeholder="Enter your college name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="event">Select Event</label>
+        <select id="event">
+          <option value="24-Hour Hackathon">24-Hour Hackathon</option>
+          <option value="RoboWars">RoboWars</option>
+          <option value="Code Sprint">Code Sprint</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn" style="width: 100%;">Submit Registration</button>
+      <div id="confirmationBox"></div>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 TechFest Committee. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    // Schedule Data
+    const scheduleData = {
+      1: [
+        { time: "09:30 AM", event: "Inauguration Ceremony", venue: "Main Auditorium" },
+        { time: "11:00 AM", event: "24-Hour Hackathon Begins", venue: "CS Lab Block" },
+        { time: "02:00 PM", event: "RoboWars Qualifiers", venue: "Open Courtyard" }
+      ],
+      2: [
+        { time: "10:00 AM", event: "Code Sprint Finals", venue: "CS Lab 1 & 2" },
+        { time: "02:30 PM", event: "RoboWars Grand Finale", venue: "Open Courtyard" },
+        { time: "05:30 PM", event: "Prize Distribution", venue: "Main Auditorium" }
+      ]
+    };
+
+    // Function 1: Scroll to Registration Form
+    function goToRegister() {
+      document.getElementById("register").scrollIntoView({ behavior: "smooth" });
+      document.getElementById("name").focus();
+    }
+
+    // Function 2: Select Event from Card Button & Scroll to Form
+    function selectEvent(eventName) {
+      document.getElementById("event").value = eventName;
+      goToRegister();
+    }
+
+    // Function 3: Switch Schedule Day Tab
+    function showDay(day, btn) {
+      document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+      if (btn) btn.classList.add("active");
+
+      const tbody = document.getElementById("scheduleBody");
+      tbody.innerHTML = scheduleData[day].map(item => `
+        <tr>
+          <td>${item.time}</td>
+          <td>${item.event}</td>
+          <td>${item.venue}</td>
+        </tr>
+      `).join("");
+    }
+
+    // Function 4: Handle Form Submission Button
+    document.getElementById("registrationForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const college = document.getElementById("college").value.trim();
+      const event = document.getElementById("event").value;
+      const passId = "TF26-" + Math.floor(1000 + Math.random() * 9000);
+
+      const box = document.getElementById("confirmationBox");
+      box.style.display = "block";
+      box.innerHTML = `
+        <strong>Registration Successful!</strong><br>
+        Name: <b>${name}</b> (${college})<br>
+        Event: <b>${event}</b><br>
+        Pass ID: <b>${passId}</b>
+      `;
+
+      this.reset();
+    });
+
+    // Load Day 1 schedule by default
+    showDay(1);
+  </script>
+
+</body>
+</html>
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    table {
+      width: 50%;
+      border-collapse: collapse; /* Merges double borders into a single line */
+    }
+    th, td {
+      border: 1px solid #333333;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Role</th>
+        <th>Department</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Aarav</td>
+        <td>Developer</td>
+        <td>Engineering</td>
+      </tr>
+      <tr>
+        <td>Meera</td>
+        <td>Designer</td>
+        <td>Product</td>
+      </tr>
+    </tbody>
+  </table>
+
+</body>
+</html>
